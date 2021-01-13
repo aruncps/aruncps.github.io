@@ -1,241 +1,112 @@
-<!DOCTYPE HTML>
-<!--
-	Striped by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
-<html>
-	<head>
-		<title>Striped by HTML5 UP</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-	</head>
-	<body class="is-preload">
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
 
-		<!-- Content -->
-			<div id="content">
-				<div class="inner">
+.links line {
+  stroke: #999;
+  stroke-opacity: 0.6;
+}
 
-					<!-- Post -->
-						<article class="box post post-excerpt">
-							<header>
-								<!--
-									Note: Titles and subtitles will wrap automatically when necessary, so don't worry
-									if they get too long. You can also remove the <p> entirely if you don't
-									need a subtitle.
-								-->
-								<h2><a href="#">Welcome to Striped</a></h2>
-								<p>A free, fully responsive HTML5 site template by HTML5 UP</p>
-							</header>
-							<div class="info">
-								<!--
-									Note: The date should be formatted exactly as it's shown below. In particular, the
-									"least significant" characters of the month should be encapsulated in a <span>
-									element to denote what gets dropped in 1200px mode (eg. the "uary" in "January").
-									Oh, and if you don't need a date for a particular page or post you can simply delete
-									the entire "date" element.
+.nodes circle {
+  stroke: #fff;
+  stroke-width: 1.5px;
+}
 
-								-->
-								<span class="date"><span class="month">Jul<span>y</span></span> <span class="day">14</span><span class="year">, 2014</span></span>
-								<!--
-									Note: You can change the number of list items in "stats" to whatever you want.
-								-->
-								<ul class="stats">
-									<li><a href="#" class="icon fa-comment">16</a></li>
-									<li><a href="#" class="icon fa-heart">32</a></li>
-									<li><a href="#" class="icon brands fa-twitter">64</a></li>
-									<li><a href="#" class="icon brands fa-facebook-f">128</a></li>
-								</ul>
-							</div>
-							<a href="#" class="image featured"><img src="images/pic01.jpg" alt="" /></a>
-							<p>
-								<strong>Hello!</strong> You're looking at <strong>Striped</strong>, a fully responsive HTML5 site template designed by <a href="http://twitter.com/ajlkn">AJ</a>
-								for <a href="http://html5up.net">HTML5 UP</a> It features a clean, minimalistic design, styling for all basic page elements (including blockquotes, tables and lists), a
-								repositionable sidebar (left or right), and HTML5/CSS3 code designed for quick and easy customization (see code comments for details).
-							</p>
-							<p>
-								Striped is released for free under the <a href="http://html5up.net/license">Creative Commons Attribution license</a> so feel free to use it for personal projects
-								or even commercial ones &ndash; just be sure to credit <a href="http://html5up.net">HTML5 UP</a> for the design. If you like what you see here, be sure to check out
-								<a href="http://html5up.net">HTML5 UP</a> for more cool designs or follow me on <a href="http://twitter.com/ajlkn">Twitter</a> for new releases and updates.
-							</p>
-						</article>
+svg {
+  flex-basis: 100%;
+  min-width: 500px;
+}
 
-					<!-- Post -->
-						<article class="box post post-excerpt">
-							<header>
-								<h2><a href="#">Lorem ipsum dolor sit amet</a></h2>
-								<p>Feugiat interdum sed commodo ipsum consequat dolor nullam metus</p>
-							</header>
-							<div class="info">
-								<span class="date"><span class="month">Jul<span>y</span></span> <span class="day">8</span><span class="year">, 2014</span></span>
-								<ul class="stats">
-									<li><a href="#" class="icon fa-comment">16</a></li>
-									<li><a href="#" class="icon fa-heart">32</a></li>
-									<li><a href="#" class="icon brands fa-twitter">64</a></li>
-									<li><a href="#" class="icon brands fa-facebook-f">128</a></li>
-								</ul>
-							</div>
-							<a href="#" class="image featured"><img src="images/pic02.jpg" alt="" /></a>
-							<p>
-								Quisque vel sapien sit amet tellus elementum ultricies. Nunc vel orci turpis. Donec id malesuada metus.
-								Nunc nulla velit, fermentum quis interdum quis, tate etiam commodo lorem ipsum dolor sit amet dolore.
-								Quisque vel sapien sit amet tellus elementum ultricies. Nunc vel orci turpis. Donec id malesuada metus.
-								Nunc nulla velit, fermentum quis interdum quis, convallis eu sapien. Integer sed ipsum ante.
-							</p>
-						</article>
+text {
+  font-family: sans-serif;
+}
 
-					<!-- Pagination -->
-						<div class="pagination">
-							<!--<a href="#" class="button previous">Previous Page</a>-->
-							<div class="pages">
-								<a href="#" class="active">1</a>
-								<a href="#">2</a>
-								<a href="#">3</a>
-								<a href="#">4</a>
-								<span>&hellip;</span>
-								<a href="#">20</a>
-							</div>
-							<a href="#" class="button next">Next Page</a>
-						</div>
+</style>
+<svg width="1910" height="915"></svg>
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script>
 
-				</div>
-			</div>
+var svg = d3.select("svg"),
+    width = +svg.attr("width"),
+    height = +svg.attr("height");
 
-		<!-- Sidebar -->
-			<div id="sidebar">
+var color = d3.scaleOrdinal(d3.schemeCategory20);
 
-				<!-- Logo -->
-					<h1 id="logo"><a href="#">STRIPED</a></h1>
+var simulation = d3.forceSimulation()
+    .force("link", d3.forceLink().id(function(d) { return d.id; }))
+    .force("charge", d3.forceManyBody().strength(function(d) { return (d.radius*-30); }))
+    .force("center", d3.forceCenter(width / 2, height / 2));
 
-				<!-- Nav -->
-					<nav id="nav">
-						<ul>
-							<li class="current"><a href="#">Latest Post</a></li>
-							<li><a href="#">Archives</a></li>
-							<li><a href="#">About Me</a></li>
-							<li><a href="#">Contact Me</a></li>
-						</ul>
-					</nav>
+d3.json("Network.json", function(error, graph) {
+  if (error) throw error;
 
-				<!-- Search -->
-					<section class="box search">
-						<form method="post" action="#">
-							<input type="text" class="text" name="search" placeholder="Search" />
-						</form>
-					</section>
+  var link = svg.append("g")
+      .attr("class", "links")
+    .selectAll("line")
+    .data(graph.links)
+    .enter().append("line")
+      .attr("stroke-width", function(d) { return Math.sqrt(d.value); });
 
-				<!-- Text -->
-					<section class="box text-style1">
-						<div class="inner">
-							<p>
-								<strong>Striped:</strong> A free and fully responsive HTML5 site
-								template designed by <a href="http://twitter.com/ajlkn">AJ</a> for <a href="http://html5up.net/">HTML5 UP</a>
-							</p>
-						</div>
-					</section>
+  var node = svg.append("g")
+      .attr("class", "nodes")
+    .selectAll("g")
+    .data(graph.nodes)
+    .enter().append("g")
 
-				<!-- Recent Posts -->
-					<section class="box recent-posts">
-						<header>
-							<h2>Recent Posts</h2>
-						</header>
-						<ul>
-							<li><a href="#">Lorem ipsum dolor</a></li>
-							<li><a href="#">Feugiat nisl aliquam</a></li>
-							<li><a href="#">Sed dolore magna</a></li>
-							<li><a href="#">Malesuada commodo</a></li>
-							<li><a href="#">Ipsum metus nullam</a></li>
-						</ul>
-					</section>
+  var circles = node.append("circle")
+      .attr("r", function(d) { return (d.radius); })
+      .attr("fill", function(d) { return color(d.group); })
+      .call(d3.drag()
+          .on("start", dragstarted)
+          .on("drag", dragged)
+          .on("end", dragended));
 
-				<!-- Recent Comments -->
-					<section class="box recent-comments">
-						<header>
-							<h2>Recent Comments</h2>
-						</header>
-						<ul>
-							<li>case on <a href="#">Lorem ipsum dolor</a></li>
-							<li>molly on <a href="#">Sed dolore magna</a></li>
-							<li>case on <a href="#">Sed dolore magna</a></li>
-						</ul>
-					</section>
+  var lables = node.append("text")
+      .text(function(d) { return d.id; })
+      .attr('x', 6)
+      .attr('y', 3)
+      .attr("font-size", function(d) { return (d.radius*3); })
+      .attr("fill", "black" );
 
-				<!-- Calendar -->
-					<section class="box calendar">
-						<div class="inner">
-							<table>
-								<caption>July 2014</caption>
-								<thead>
-									<tr>
-										<th scope="col" title="Monday">M</th>
-										<th scope="col" title="Tuesday">T</th>
-										<th scope="col" title="Wednesday">W</th>
-										<th scope="col" title="Thursday">T</th>
-										<th scope="col" title="Friday">F</th>
-										<th scope="col" title="Saturday">S</th>
-										<th scope="col" title="Sunday">S</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<td colspan="4" class="pad"><span>&nbsp;</span></td>
-										<td><span>1</span></td>
-										<td><span>2</span></td>
-										<td><span>3</span></td>
-									</tr>
-									<tr>
-										<td><span>4</span></td>
-										<td><span>5</span></td>
-										<td><a href="#">6</a></td>
-										<td><span>7</span></td>
-										<td><span>8</span></td>
-										<td><span>9</span></td>
-										<td><a href="#">10</a></td>
-									</tr>
-									<tr>
-										<td><span>11</span></td>
-										<td><span>12</span></td>
-										<td><span>13</span></td>
-										<td class="today"><a href="#">14</a></td>
-										<td><span>15</span></td>
-										<td><span>16</span></td>
-										<td><span>17</span></td>
-									</tr>
-									<tr>
-										<td><span>18</span></td>
-										<td><span>19</span></td>
-										<td><span>20</span></td>
-										<td><span>21</span></td>
-										<td><span>22</span></td>
-										<td><a href="#">23</a></td>
-										<td><span>24</span></td>
-									</tr>
-									<tr>
-										<td><a href="#">25</a></td>
-										<td><span>26</span></td>
-										<td><span>27</span></td>
-										<td><span>28</span></td>
-										<td class="pad" colspan="3"><span>&nbsp;</span></td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</section>
+  node.append("title")
+      .text(function(d) { return d.id; });
 
-				<!-- Copyright -->
-					<ul id="copyright">
-						<li>&copy; Untitled.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-					</ul>
+  simulation
+      .nodes(graph.nodes)
+      .on("tick", ticked);
 
-			</div>
+  simulation.force("link")
+      .links(graph.links);
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+  function ticked() {
+    link
+        .attr("x1", function(d) { return d.source.x; })
+        .attr("y1", function(d) { return d.source.y; })
+        .attr("x2", function(d) { return d.target.x; })
+        .attr("y2", function(d) { return d.target.y; });
 
-	</body>
-</html>
+    node
+        .attr("transform", function(d) {
+          return "translate(" + d.x + "," + d.y + ")";
+        })
+  }
+});
+
+function dragstarted(d) {
+  if (!d3.event.active) simulation.alphaTarget(0.3).restart();
+  d.fx = d.x;
+  d.fy = d.y;
+}
+
+function dragged(d) {
+  d.fx = d3.event.x;
+  d.fy = d3.event.y;
+}
+
+function dragended(d) {
+  if (!d3.event.active) simulation.alphaTarget(0);
+  d.fx = null;
+  d.fy = null;
+}
+
+</script>
