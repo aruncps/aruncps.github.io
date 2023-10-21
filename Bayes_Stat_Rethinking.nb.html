@@ -11,7 +11,7 @@
 
 
 
-<title>Bayes Statistical Rethinking (Notebook)</title>
+<title>Learning - Bayes Statistical Rethinking by Richard McElreath</title>
 
 <script>// Pandoc 2.9 adds attributes on both header and div. We remove the former (to
 // be compatible with the behavior of Pandoc < 2.8).
@@ -1746,19 +1746,44 @@ display: none;
 
 
 
-<h1 class="title toc-ignore">Bayes Statistical Rethinking
-(Notebook)</h1>
+<h1 class="title toc-ignore">Learning - Bayes Statistical Rethinking by
+Richard McElreath</h1>
 
 </div>
 
 
 <!-- rnb-text-begin -->
-<p>This is an <a href="http://rmarkdown.rstudio.com">R Markdown</a>
-Notebook. When you execute code within the notebook, the results appear
-beneath the code.</p>
+<hr />
+<div id="my-preface" class="section level3">
+<h3>My Preface</h3>
+<p>My problem was to prepare a healthcare summary with comparitive stats
+along with driver or the cause for a condition or poor or superb
+performance of a healthcare institution!</p>
+<p>As this Author rightly put, I was not confident on the p-calues or
+coeffients or accuracies, to consider a diagnosis or a procedure as a
+driver. I needed to tell a story for a medical director or physician to
+consider these drivers as a takeaway to investigate or ponder
+further!</p>
+<p>At this juncture of dilemma, I got introduced to Bayes Network!</p>
+<p>I ran from end to end, reviewing many pdfs, youtube snippets and even
+the famous coursera course on Bayesian Network aka Probabilitic
+Graphical models, with less return on the effort put! They initial
+chapters were easy, later they were getting too complex.</p>
+<p>Then I landed on the The book Think Bayes by Allen Downey was savior,
+along with his youtube tutorial <a href="https://www.youtube.com/watch?v=fsdbneHgi58">Bayesian Decision
+Analysis</a> on the same!</p>
+<p>Now trying to expand with Richard McElreath, whose book has been
+called out by many authors &amp; readers! Lets see how far can I go…
+fingers crossed!!!!</p>
+<hr />
+<div id="delete-later" class="section level5">
+<h5>DELETE LATER</h5>
 <p>Try executing this chunk by clicking the <em>Run</em> button within
 the chunk or by placing your cursor inside it and pressing
 <em>Ctrl+Shift+Enter</em>.</p>
+<hr />
+</div>
+</div>
 <div id="all-models-are-wrong-but-some-are-useful." class="section level3">
 <h3>All models are wrong, but some are useful.</h3>
 <!-- rnb-text-end -->
@@ -1798,7 +1823,7 @@ run in the editor is displayed.</p>
 <!-- rnb-text-end -->
 </div>
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiQmF5ZXMgU3RhdGlzdGljYWwgUmV0aGlua2luZyAoTm90ZWJvb2spIgpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sKLS0tCgpUaGlzIGlzIGFuIFtSIE1hcmtkb3duXShodHRwOi8vcm1hcmtkb3duLnJzdHVkaW8uY29tKSBOb3RlYm9vay4gV2hlbiB5b3UgZXhlY3V0ZSBjb2RlIHdpdGhpbiB0aGUgbm90ZWJvb2ssIHRoZSByZXN1bHRzIGFwcGVhciBiZW5lYXRoIHRoZSBjb2RlLiAKClRyeSBleGVjdXRpbmcgdGhpcyBjaHVuayBieSBjbGlja2luZyB0aGUgKlJ1biogYnV0dG9uIHdpdGhpbiB0aGUgY2h1bmsgb3IgYnkgcGxhY2luZyB5b3VyIGN1cnNvciBpbnNpZGUgaXQgYW5kIHByZXNzaW5nICpDdHJsK1NoaWZ0K0VudGVyKi4gCgojIyMgQWxsIG1vZGVscyBhcmUgd3JvbmcsIGJ1dCBzb21lIGFyZSB1c2VmdWwuCgpgYGB7cn0KIyBMb2FkIHRoZSBkYXRhOgojIGNhciBicmFraW5nIGRpc3RhbmNlcyBpbiBmZWV0IHBhaXJlZCB3aXRoIHNwZWVkcyBpbiBrbS9oCiMgc2VlID9jYXJzIGZvciBkZXRhaWxzCmRhdGEoY2FycykKIyBmaXQgYSBsaW5lYXIgcmVncmVzc2lvbiBvZiBkaXN0YW5jZSBvbiBzcGVlZAptIDwtIGxtKCBkaXN0IH4gc3BlZWQgLCBkYXRhPWNhcnMgKQojIGVzdGltYXRlZCBjb2VmZmljaWVudHMgZnJvbSB0aGUgbW9kZWwKY29lZihtKQojIHBsb3QgcmVzaWR1YWxzIGFnYWluc3Qgc3BlZWQKcGxvdCggcmVzaWQobSkgfiBzcGVlZCAsIGRhdGE9Y2FycyApCmBgYAoKQWRkIGEgbmV3IGNodW5rIGJ5IGNsaWNraW5nIHRoZSAqSW5zZXJ0IENodW5rKiBidXR0b24gb24gdGhlIHRvb2xiYXIgb3IgYnkgcHJlc3NpbmcgKkN0cmwrQWx0K0kqLgoKV2hlbiB5b3Ugc2F2ZSB0aGUgbm90ZWJvb2ssIGFuIEhUTUwgZmlsZSBjb250YWluaW5nIHRoZSBjb2RlIGFuZCBvdXRwdXQgd2lsbCBiZSBzYXZlZCBhbG9uZ3NpZGUgaXQgKGNsaWNrIHRoZSAqUHJldmlldyogYnV0dG9uIG9yIHByZXNzICpDdHJsK1NoaWZ0K0sqIHRvIHByZXZpZXcgdGhlIEhUTUwgZmlsZSkuCgpUaGUgcHJldmlldyBzaG93cyB5b3UgYSByZW5kZXJlZCBIVE1MIGNvcHkgb2YgdGhlIGNvbnRlbnRzIG9mIHRoZSBlZGl0b3IuIENvbnNlcXVlbnRseSwgdW5saWtlICpLbml0KiwgKlByZXZpZXcqIGRvZXMgbm90IHJ1biBhbnkgUiBjb2RlIGNodW5rcy4gSW5zdGVhZCwgdGhlIG91dHB1dCBvZiB0aGUgY2h1bmsgd2hlbiBpdCB3YXMgbGFzdCBydW4gaW4gdGhlIGVkaXRvciBpcyBkaXNwbGF5ZWQuCg==</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiTGVhcm5pbmcgLSBCYXllcyBTdGF0aXN0aWNhbCBSZXRoaW5raW5nIGJ5IFJpY2hhcmQgTWNFbHJlYXRoIgpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sKLS0tCgoqKioqCiMjIyBNeSBQcmVmYWNlCk15IHByb2JsZW0gd2FzIHRvIHByZXBhcmUgYSBoZWFsdGhjYXJlIHN1bW1hcnkgd2l0aCBjb21wYXJpdGl2ZSBzdGF0cyBhbG9uZyB3aXRoIGRyaXZlciBvciB0aGUgY2F1c2UgZm9yIGEgY29uZGl0aW9uIG9yIHBvb3Igb3Igc3VwZXJiIHBlcmZvcm1hbmNlIG9mIGEgaGVhbHRoY2FyZSBpbnN0aXR1dGlvbiEgCgpBcyB0aGlzIEF1dGhvciByaWdodGx5IHB1dCwgSSB3YXMgbm90IGNvbmZpZGVudCBvbiB0aGUgcC1jYWx1ZXMgb3IgY29lZmZpZW50cyBvciBhY2N1cmFjaWVzLCB0byBjb25zaWRlciBhIGRpYWdub3NpcyBvciBhIHByb2NlZHVyZSBhcyBhIGRyaXZlci4gSSBuZWVkZWQgdG8gdGVsbCBhIHN0b3J5IGZvciBhIG1lZGljYWwgZGlyZWN0b3Igb3IgcGh5c2ljaWFuIHRvIGNvbnNpZGVyIHRoZXNlIGRyaXZlcnMgYXMgYSB0YWtlYXdheSB0byBpbnZlc3RpZ2F0ZSBvciBwb25kZXIgZnVydGhlciEgCgpBdCB0aGlzIGp1bmN0dXJlIG9mIGRpbGVtbWEsIEkgZ290IGludHJvZHVjZWQgdG8gQmF5ZXMgTmV0d29yayEgCgpJIHJhbiBmcm9tIGVuZCB0byBlbmQsIHJldmlld2luZyBtYW55IHBkZnMsIHlvdXR1YmUgc25pcHBldHMgYW5kIGV2ZW4gdGhlIGZhbW91cyBjb3Vyc2VyYSBjb3Vyc2Ugb24gQmF5ZXNpYW4gTmV0d29yayBha2EgUHJvYmFiaWxpdGljIEdyYXBoaWNhbCBtb2RlbHMsIHdpdGggbGVzcyByZXR1cm4gb24gdGhlIGVmZm9ydCBwdXQhIFRoZXkgaW5pdGlhbCBjaGFwdGVycyB3ZXJlIGVhc3ksIGxhdGVyIHRoZXkgd2VyZSBnZXR0aW5nIHRvbyBjb21wbGV4LgoKVGhlbiBJIGxhbmRlZCBvbiB0aGUgVGhlIGJvb2sgVGhpbmsgQmF5ZXMgYnkgQWxsZW4gRG93bmV5IHdhcyBzYXZpb3IsIGFsb25nIHdpdGggaGlzIHlvdXR1YmUgdHV0b3JpYWwgW0JheWVzaWFuIERlY2lzaW9uIEFuYWx5c2lzXShodHRwczovL3d3dy55b3V0dWJlLmNvbS93YXRjaD92PWZzZGJuZUhnaTU4KSBvbiB0aGUgc2FtZSEgCgpOb3cgdHJ5aW5nIHRvIGV4cGFuZCB3aXRoIFJpY2hhcmQgTWNFbHJlYXRoLCB3aG9zZSBib29rIGhhcyBiZWVuIGNhbGxlZCBvdXQgYnkgbWFueSBhdXRob3JzICYgcmVhZGVycyEgTGV0cyBzZWUgaG93IGZhciBjYW4gSSBnby4uLiBmaW5nZXJzIGNyb3NzZWQhISEhCgoqKioqCiMjIyMjIERFTEVURSBMQVRFUgpUcnkgZXhlY3V0aW5nIHRoaXMgY2h1bmsgYnkgY2xpY2tpbmcgdGhlICpSdW4qIGJ1dHRvbiB3aXRoaW4gdGhlIGNodW5rIG9yIGJ5IHBsYWNpbmcgeW91ciBjdXJzb3IgaW5zaWRlIGl0IGFuZCBwcmVzc2luZyAqQ3RybCtTaGlmdCtFbnRlciouIAoKKioqKgoKIyMjIEFsbCBtb2RlbHMgYXJlIHdyb25nLCBidXQgc29tZSBhcmUgdXNlZnVsLgoKYGBge3J9CiMgTG9hZCB0aGUgZGF0YToKIyBjYXIgYnJha2luZyBkaXN0YW5jZXMgaW4gZmVldCBwYWlyZWQgd2l0aCBzcGVlZHMgaW4ga20vaAojIHNlZSA/Y2FycyBmb3IgZGV0YWlscwpkYXRhKGNhcnMpCiMgZml0IGEgbGluZWFyIHJlZ3Jlc3Npb24gb2YgZGlzdGFuY2Ugb24gc3BlZWQKbSA8LSBsbSggZGlzdCB+IHNwZWVkICwgZGF0YT1jYXJzICkKIyBlc3RpbWF0ZWQgY29lZmZpY2llbnRzIGZyb20gdGhlIG1vZGVsCmNvZWYobSkKIyBwbG90IHJlc2lkdWFscyBhZ2FpbnN0IHNwZWVkCnBsb3QoIHJlc2lkKG0pIH4gc3BlZWQgLCBkYXRhPWNhcnMgKQpgYGAKCkFkZCBhIG5ldyBjaHVuayBieSBjbGlja2luZyB0aGUgKkluc2VydCBDaHVuayogYnV0dG9uIG9uIHRoZSB0b29sYmFyIG9yIGJ5IHByZXNzaW5nICpDdHJsK0FsdCtJKi4KCldoZW4geW91IHNhdmUgdGhlIG5vdGVib29rLCBhbiBIVE1MIGZpbGUgY29udGFpbmluZyB0aGUgY29kZSBhbmQgb3V0cHV0IHdpbGwgYmUgc2F2ZWQgYWxvbmdzaWRlIGl0IChjbGljayB0aGUgKlByZXZpZXcqIGJ1dHRvbiBvciBwcmVzcyAqQ3RybCtTaGlmdCtLKiB0byBwcmV2aWV3IHRoZSBIVE1MIGZpbGUpLgoKVGhlIHByZXZpZXcgc2hvd3MgeW91IGEgcmVuZGVyZWQgSFRNTCBjb3B5IG9mIHRoZSBjb250ZW50cyBvZiB0aGUgZWRpdG9yLiBDb25zZXF1ZW50bHksIHVubGlrZSAqS25pdCosICpQcmV2aWV3KiBkb2VzIG5vdCBydW4gYW55IFIgY29kZSBjaHVua3MuIEluc3RlYWQsIHRoZSBvdXRwdXQgb2YgdGhlIGNodW5rIHdoZW4gaXQgd2FzIGxhc3QgcnVuIGluIHRoZSBlZGl0b3IgaXMgZGlzcGxheWVkLgo=</div>
 
 
 
